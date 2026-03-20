@@ -7,6 +7,8 @@ import com.qcloud.cos.model.PutObjectResult;
 import com.zqw.qwaicodemother.config.CosClientConfig;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -14,6 +16,7 @@ import java.io.File;
 
 @Slf4j
 @Component
+@ConditionalOnBean(CosClientConfig.class)   // CosManager <- 有 CosClientConfig才加载  <-  yml文件配制cos才加载
 public class CosManager {
 
     @Resource

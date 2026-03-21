@@ -1,6 +1,7 @@
 package com.zqw.qwaicodemother.config;
 
 import cn.hutool.core.util.StrUtil;
+import dev.langchain4j.community.store.embedding.redis.RedisEmbeddingStore;
 import dev.langchain4j.community.store.memory.chat.redis.RedisChatMemoryStore;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 // todo 测试是否能够使用ConfigurationProperties
 // @ConfigurationProperties(prefix = "spring.data.redis")
 public class RedisChatMemoryStoreConfig {
-    @Value("${spring.data.redis.host}")
+    @Value("${spring.data.redis.host:localhost}")
     private String host;
 
     @Value("${spring.data.redis.port}")
@@ -24,7 +25,7 @@ public class RedisChatMemoryStoreConfig {
     @Value("${spring.data.redis.password}")
     private String password;
 
-    @Value("${spring.data.redis.timeout}")
+    @Value("${spring.data.redis.ttl}")
     private long ttl;
 
     @Value("${spring.data.redis.database}")

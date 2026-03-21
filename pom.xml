@@ -28,6 +28,8 @@
         <spring-boot-version>3.5.3</spring-boot-version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
         <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
+        <!--设置dubbo的版本-->
+        <dubbo.version>3.3.0</dubbo.version>
     </properties>
 
     <dependencies>
@@ -85,8 +87,17 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-bom</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+
 
     <!--这个必须配制，否则会在程序编译后将注解信息擦除，导致请求参数名映射错误-->
     <build>

@@ -11,13 +11,15 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * 基本配置获取COSClient操作对象
  */
 @Configuration
 @ConfigurationProperties(prefix = "cos.client")
-@ConditionalOnProperty(     // 根据输入的参数判断是否加载这个类
+// 根据输入的参数判断是否加载这个类
+@ConditionalOnProperty(
         prefix = "cos.client",
         name = {"host", "secretId", "secretKey", "region", "bucket"}
 )
@@ -28,7 +30,7 @@ public class CosClientConfig {
     private String secretId;
     private String secretKey;
     private String region;
-    private String bucketName;
+    private String bucket;
 
     @Bean
     public COSClient cosClient(){

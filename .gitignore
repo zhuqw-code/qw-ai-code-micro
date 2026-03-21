@@ -1,5 +1,6 @@
 #custom
 qw-ai-code-app/src/main/resources/application-local.yml
+qw-ai-code-screenshot/src/main/resources/application-local.yml
 
 target/
 !.mvn/wrapper/maven-wrapper.jar

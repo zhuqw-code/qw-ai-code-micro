@@ -33,6 +33,7 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -59,8 +60,9 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App>
 
     // @Resource
     // private UserService userService;
-    @Resource
-    @Lazy
+    // @Resource
+    // @Lazy
+    @DubboReference
     private InnerUserService userService;
 
     @Resource
@@ -79,8 +81,9 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App>
     // 截图服务
     // @Resource
     // private ScreenshotService screenshotService;
-    @Resource
-    @Lazy
+    // @Resource
+    // @Lazy
+    @DubboReference
     private InnerScreenshotService screenshotService;
 
     @Value("${code.deploy-host:http://localhost}")

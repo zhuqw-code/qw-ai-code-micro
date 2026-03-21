@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 
 
-@Slf4j
 @Component
-@ConditionalOnBean(CosClientConfig.class)   // CosManager <- 有 CosClientConfig才加载  <-  yml文件配制cos才加载
+@Slf4j
+@ConditionalOnBean(COSClient.class)   // CosManager <- 有 CosClientConfig才加载  <-  yml文件配制cos才加载
 public class CosManager {
 
     @Resource
@@ -33,7 +33,7 @@ public class CosManager {
      */
     public PutObjectResult putObject(String key, File file){
         try {
-            PutObjectRequest putObjectRequest = new PutObjectRequest(cosClientConfig.getBucketName(), key, file);
+            PutObjectRequest putObjectRequest = new PutObjectRequest(cosClientConfig.getBucket(), key, file);
             return COSClient.putObject(putObjectRequest);
         } catch (CosClientException e) {
             log.error("上传文件到COS失败，key: {}, file: {}", key, file, e);
